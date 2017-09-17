@@ -1,0 +1,87 @@
+SDS programming challenge
+
+completed by Devon McBride
+
+devonmcb@yahoo.com
+
+Monday, September 4, 2017
+
+FILES:
+
+  Included with this project are 15 files:
+
+  src/com.d3von/InnDriver.java -- one of three drivers (closest to the original code)
+  src/com.d3von/InnDriverSimple.java -- one of three drivers (closest to the original code)
+  src/com.d3von/InnDriverOOP.java -- one of three drivers (closest to the original code)
+  src/com/d3von/ItemBackstage.java -- child of Item.java
+  src/com/d3von/ItemBrie.java -- child of Item.java
+  src/com/d3von/ItemConjure.java -- child of Item.java
+  src/com/d3von/Item.java -- concrete class, "regular" item, parent of more specialized Items
+  src/com/d3von/ItemRegular.java -- not used -- child of Item.java
+  src/com/d3von/ItemSulfuras.java -- child of Item.java
+  src/com/d3von/ManageInventory.java -- class to contain UpdateQuality()
+  src/com/d3von/ManageInventoryOOP.java -- class to contain UpdateQuality()
+  src/com/d3von/ManageInventorySimple.java -- class to contain UpdateQuality()
+  src/com/d3von/README -- this file
+  src/Original_Email_Instructions
+  src/test_cases_documented.ods -- a spreadsheet of manually documented test cases.
+
+
+TO COMPILE: see TO RUN:
+TO RUN:
+
+  Navigate to the src directory.
+  You can compile and run the code with the following commands.
+
+  .../src $ javac -d classes com/d3von/*.java
+
+  .../src $ cd classes
+
+  .../src/classes $ java com.d3von.InnDriver
+  .../src/classes $ java com.d3von.InnDriverSimple
+  .../src/classes $ java com.d3von.InnDriverOOP
+
+  NOTE: see the code in each version of the Driver, and read the remarks below about what the output means,
+  design decisions, and other concerns.
+
+  NOTE: I used the IntelliJ IDEA IDE, where it is much easier to run and understand the code.
+
+
+Remarks:
+
+REFACTORED TO JAVA
+===================
+The code I received appeared to be written in C#.
+
+I do not know C# (though its syntax is very similar to C/Java, etc).
+
+Therefore I have refactored to Java (I had indicated to Chris Moses that I perfer Java or PHP if given a choice).
+
+THREE VARIANTS OF THE PROGRAM
+=============================
+I chose to write three versions of the program:
+1. called InnDriver, which I kept as close as I could to the original code;
+2. called InnDriverSimple, which I believe made the logic easier to understand;
+3. called InnDriverOOP, which eliminates the decision tree in the UpdateQuality function and employs polymorphism
+instead of relying so heavily on difficult-to-read if statements.
+
+
+BUSINESS LOGIC
+==============
+I paid very close attention to the business log described in English in the text of the email.
+
+I modified the original algorithm somewhat as I found it conflicted somewhat with the language expressed in the business
+logic. For example, I found that the algorithm given didn’t appear to conform to business logic
+for Aged Brie (appreciation accellerated after SelIin reached 0). Also, I was unsure of business logic regarding whether
+to reduce quality at zero or at negative one. (easy to discuss and fix as necessary)
+
+CONCLUSIONS ABOUT CODING EACH VARIANT
+=====================================
+Coding the received algorithm was rather difficult (especially due to refactoring to Java, but that's not really the
+goal of the execise). Modifying such an extensive decision tree is taxing and prone to error.
+
+Coding a simpler version of the decision tree (with the switch statement) was far easier, and less prone to error.
+
+Coding in an object oriented fashion (using a strategy pattern) to handle which type of inventory item is to be updated
+likewise was easier and less prone to error, and errors were easier to identify, fix, and keep isolated from other
+inventory items.
